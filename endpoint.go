@@ -364,6 +364,17 @@ type Record struct {
 	UpdatedAt   time.Time `json:"updated_at,omitempty" yaml:"updated_at,omitempty"`
 }
 
+// RuntimeRecord is one in-memory runtime endpoint registry entry.
+type RuntimeRecord struct {
+	Spec       Spec              `json:"spec,omitempty" yaml:"spec,omitempty"`
+	Resolved   Resolved          `json:"resolved,omitempty" yaml:"resolved,omitempty"`
+	Source     SourceRef         `json:"source,omitempty" yaml:"source,omitempty"`
+	Metadata   map[string]string `json:"metadata,omitempty" yaml:"metadata,omitempty"`
+	Owner      string            `json:"owner,omitempty" yaml:"owner,omitempty"`
+	Discovered time.Time         `json:"discovered,omitempty" yaml:"discovered,omitempty"`
+	Expires    time.Time         `json:"expires,omitempty" yaml:"expires,omitempty"`
+}
+
 // ValidateURL checks endpoint URL syntax while allowing file-like schemes used
 // by SQLite endpoints.
 func ValidateURL(raw string) error {
