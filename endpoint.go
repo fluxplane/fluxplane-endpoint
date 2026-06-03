@@ -66,6 +66,7 @@ type EndpointSpec struct {
 	Name        string   `json:"name" yaml:"name"`
 	Description string   `json:"description,omitempty" yaml:"description,omitempty"`
 	Products    []string `json:"products,omitempty" yaml:"products,omitempty"`
+	Env         []string `json:"env,omitempty" yaml:"env,omitempty"`
 }
 
 // Spec describes an explicitly configured endpoint.

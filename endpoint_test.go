@@ -25,6 +25,13 @@ func TestEndpointRefNormalizeAndValidate(t *testing.T) {
 	}
 }
 
+func TestEndpointSpecCarriesURLAliases(t *testing.T) {
+	spec := EndpointSpec{Name: "gitlab.endpoint", Products: []string{"gitlab"}, Env: []string{"GITLAB_URL"}}
+	if len(spec.Env) != 1 || spec.Env[0] != "GITLAB_URL" {
+		t.Fatalf("spec = %#v", spec)
+	}
+}
+
 func TestDiscoveryCandidateConversion(t *testing.T) {
 	candidate := DiscoveryCandidate{
 		URL:         "http://loki.monitoring.svc:3100",
